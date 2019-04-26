@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.redisasyncmassage.dao.MailMassageDAO">
+    <select id="getMailMassage" resultType="MailMassage">
+        select * from `MailMassage` where id=#{mailMsgId}
+    </select>
+    <insert id="saveMailMassage">
+        insert into MailMassage values ((select max(id)+1 from MailMassage),#{mail},#{massage},#{createUserId},#{createTime})
+    </insert>
+</mapper>

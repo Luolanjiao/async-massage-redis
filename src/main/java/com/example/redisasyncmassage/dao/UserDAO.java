@@ -14,4 +14,5 @@ import java.util.List;
 @Component
 public interface UserDAO {
    List<User> getUsers();
+
 }
