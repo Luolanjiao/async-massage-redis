@@ -4,8 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.example.redisasyncmassage.async.Event;
 import com.example.redisasyncmassage.async.EventHandler;
 import com.example.redisasyncmassage.async.EventType;
-import com.example.redisasyncmassage.dao.MailMassageDAO;
-import com.example.redisasyncmassage.entity.MailMassage;
+import com.example.redisasyncmassage.dao.MailMessageDAO;
+import com.example.redisasyncmassage.entity.MailMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +20,7 @@ import java.util.List;
 @Component
 public class SendMailEventHandler implements EventHandler {
     @Autowired
-    private MailMassageDAO mailMassageDAO;
+    private MailMessageDAO mailMassageDAO;
 
     /***
      * 保存消息并发送
@@ -28,9 +28,9 @@ public class SendMailEventHandler implements EventHandler {
      */
     @Override
     public void doHandle(Event event) {
-        MailMassage mailMassage = JSON.parseObject(JSON.toJSONString(event.getEventObj()), MailMassage.class);
-        mailMassageDAO.saveMailMassage(mailMassage);
-        System.out.println("发送短信=====" + mailMassageDAO.getMailMassage(1));
+        MailMessage mailMassage = JSON.parseObject(JSON.toJSONString(event.getEventObj()), MailMessage.class);
+        mailMassageDAO.saveMailMessage(mailMassage);
+        System.out.println("发送短信=====" + mailMassageDAO.getMailMessage(1));
     }
 
     @Override

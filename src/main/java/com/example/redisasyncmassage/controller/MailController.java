@@ -3,7 +3,7 @@ package com.example.redisasyncmassage.controller;
 import com.example.redisasyncmassage.async.Event;
 import com.example.redisasyncmassage.async.EventType;
 import com.example.redisasyncmassage.async.SendMailEventProducer;
-import com.example.redisasyncmassage.entity.MailMassage;
+import com.example.redisasyncmassage.entity.MailMessage;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +25,7 @@ public class MailController {
     public String sendMail() {
         String currentUserId = "1";
         String sendToUserId = "2";
-        MailMassage mailMassage=new MailMassage(1, "974292612@qq.com", "hello,my friends", Integer.parseInt(currentUserId), new Date()
+        MailMessage mailMassage=new MailMessage(1, "974292612@qq.com", "hello,my friends", Integer.parseInt(currentUserId), new Date()
         );
         sendMailEventProducer.fireEvent(new Event()
                 .setActorId(currentUserId)
